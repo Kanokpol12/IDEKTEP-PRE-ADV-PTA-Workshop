@@ -1,0 +1,474 @@
+[
+    {
+        "id": "1354f2956777899d",
+        "type": "tab",
+        "label": "PTA Workshop Pre Advance",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "779abcd6a7f800ad",
+        "type": "inject",
+        "z": "1354f2956777899d",
+        "name": "Buzzer ON",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "BUZZER_ON",
+        "payloadType": "str",
+        "x": 220,
+        "y": 160,
+        "wires": [
+            [
+                "9bad720ee4133dab"
+            ]
+        ]
+    },
+    {
+        "id": "8a355ff09e9ab33f",
+        "type": "inject",
+        "z": "1354f2956777899d",
+        "name": "Buzzer OFF",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "BUZZER_OFF",
+        "payloadType": "str",
+        "x": 230,
+        "y": 200,
+        "wires": [
+            [
+                "9bad720ee4133dab"
+            ]
+        ]
+    },
+    {
+        "id": "9bad720ee4133dab",
+        "type": "mqtt out",
+        "z": "1354f2956777899d",
+        "name": "",
+        "topic": "esp/adv1/com/name",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "mqtt_broker",
+        "x": 540,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "5e2a98e9ba991a2a",
+        "type": "debug",
+        "z": "1354f2956777899d",
+        "name": "Debug Command",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1150,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "d037fac630cf483a",
+        "type": "mqtt in",
+        "z": "1354f2956777899d",
+        "name": "SENSOR 1,2,3",
+        "topic": "esp/adv1/sen/name",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "b3d95a1f300e3b3d",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 840,
+        "y": 160,
+        "wires": [
+            [
+                "5e2a98e9ba991a2a"
+            ]
+        ]
+    },
+    {
+        "id": "81988ef8b0d93639",
+        "type": "inject",
+        "z": "1354f2956777899d",
+        "name": "Send Command",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "esp/adv1/com",
+        "payload": "HUMYAI MAKMAK",
+        "payloadType": "str",
+        "x": 240,
+        "y": 480,
+        "wires": [
+            [
+                "eb8273b02827ef9e"
+            ]
+        ]
+    },
+    {
+        "id": "eb8273b02827ef9e",
+        "type": "mqtt out",
+        "z": "1354f2956777899d",
+        "name": "MQTT → ESP32",
+        "topic": "esp/adv1/com/name",
+        "qos": "0",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "2ff4e9ab.19dbb6",
+        "x": 530,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "929a623589514dc5",
+        "type": "comment",
+        "z": "1354f2956777899d",
+        "name": "PTA WORKSHOP",
+        "info": "",
+        "x": 230,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "7cefe8948b0489d9",
+        "type": "mqtt in",
+        "z": "1354f2956777899d",
+        "name": "SENSOR 1",
+        "topic": "esp/adv1/sen1/name",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "b3d95a1f300e3b3d",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 830,
+        "y": 220,
+        "wires": [
+            [
+                "5e2a98e9ba991a2a"
+            ]
+        ]
+    },
+    {
+        "id": "c04f2d9244da5aba",
+        "type": "mqtt in",
+        "z": "1354f2956777899d",
+        "name": "SENSOR 2",
+        "topic": "esp/adv1/sen2/name",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "b3d95a1f300e3b3d",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 830,
+        "y": 280,
+        "wires": [
+            [
+                "5e2a98e9ba991a2a"
+            ]
+        ]
+    },
+    {
+        "id": "99e50933eba903c9",
+        "type": "mqtt in",
+        "z": "1354f2956777899d",
+        "name": "SENSOR 3",
+        "topic": "esp/adv1/sen3/name",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "b3d95a1f300e3b3d",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 830,
+        "y": 340,
+        "wires": [
+            [
+                "5e2a98e9ba991a2a"
+            ]
+        ]
+    },
+    {
+        "id": "7c1804e84082cde3",
+        "type": "mqtt out",
+        "z": "1354f2956777899d",
+        "name": "MQTT → ESP32 (2)",
+        "topic": "esp/adv1/com2/name",
+        "qos": "0",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "2ff4e9ab.19dbb6",
+        "x": 540,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "a2f9d3ee62ed40d0",
+        "type": "inject",
+        "z": "1354f2956777899d",
+        "name": "Send Command2",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "esp/adv1/com2",
+        "payload": "test send 2",
+        "payloadType": "str",
+        "x": 240,
+        "y": 540,
+        "wires": [
+            [
+                "7c1804e84082cde3"
+            ]
+        ]
+    },
+    {
+        "id": "80ad8114c0e87aac",
+        "type": "comment",
+        "z": "1354f2956777899d",
+        "name": "BUZZER CONTROL",
+        "info": "",
+        "x": 230,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "83341cbd3be5a2bc",
+        "type": "comment",
+        "z": "1354f2956777899d",
+        "name": "SENSOR DATA",
+        "info": "",
+        "x": 840,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "2d62c9edb87e0c85",
+        "type": "comment",
+        "z": "1354f2956777899d",
+        "name": "SEND DATA TO ESP32",
+        "info": "",
+        "x": 240,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "9697227cae3f218c",
+        "type": "inject",
+        "z": "1354f2956777899d",
+        "name": "Buzzer Blink",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "BUZZER_BLINK",
+        "payloadType": "str",
+        "x": 230,
+        "y": 240,
+        "wires": [
+            [
+                "9bad720ee4133dab"
+            ]
+        ]
+    },
+    {
+        "id": "b017b107aa023687",
+        "type": "comment",
+        "z": "1354f2956777899d",
+        "name": "LED CONTROL",
+        "info": "",
+        "x": 220,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "04f704a21a49ef5a",
+        "type": "inject",
+        "z": "1354f2956777899d",
+        "name": "LED ON",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "LED_ON",
+        "payloadType": "str",
+        "x": 220,
+        "y": 340,
+        "wires": [
+            [
+                "9bad720ee4133dab"
+            ]
+        ]
+    },
+    {
+        "id": "04c20e56550a669c",
+        "type": "inject",
+        "z": "1354f2956777899d",
+        "name": "LED OFF",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "LED_OFF",
+        "payloadType": "str",
+        "x": 220,
+        "y": 380,
+        "wires": [
+            [
+                "9bad720ee4133dab"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_broker",
+        "type": "mqtt-broker",
+        "name": "EMQX Broker",
+        "broker": "broker.emqx.io",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "b3d95a1f300e3b3d",
+        "type": "mqtt-broker",
+        "name": "broker.emqx.io:1883",
+        "broker": "broker.emqx.io:1883",
+        "port": 1883,
+        "clientid": "emqx.io",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "3",
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "2ff4e9ab.19dbb6",
+        "type": "mqtt-broker",
+        "name": "EMQX Broker",
+        "broker": "broker.emqx.io",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]
